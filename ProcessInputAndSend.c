@@ -1,8 +1,8 @@
-#include "FrameAndSend.h"
+#include "ProcessInputAndSend.h"
 
 void (*GetParameters)(void) = GenerateRandParams;
 
-void TransmitDataToConsole(void)
+void SendDataToConsole(void)
 {
   (*GetParameters)();
   const tyBatteryParams_t* SensorParams = GetSensorArrayParameters();
