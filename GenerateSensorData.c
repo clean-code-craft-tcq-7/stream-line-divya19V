@@ -6,7 +6,7 @@ const unsigned int BufferSize = 50U;
 const unsigned int UpperBoundaryVoltage = 43U, LowerBoundaryVoltage = 29U;
 const unsigned int UpperBoundaryCurrent = 100U;
 
-static tyBatteryParams_t BattParamBuffer[BufferSizePerSession];
+static tyBatteryParams_t BattParamBuffer[BufferSize];
 tyBatteryParams_t* const BattParamPointer = BattParamBuffer;
 
 static void CopyFromFileToBuffer(FILE* fp);
