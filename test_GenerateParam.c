@@ -41,5 +41,5 @@ TEST_CASE("check if current datasets lie in the range \n")
 TEST_CASE("Just print the value in the console \n")
 { 
   //Print the results in the console
-  TransmitDataToConsole();
+  SendDataToConsole();
 }
