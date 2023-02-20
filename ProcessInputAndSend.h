@@ -11,7 +11,7 @@ enum enumParamType {
 }
 
 void ChangeTheGetParamType(void (*GetTypeFunction)());
-float GetElement(const unsigned int ArrayElement,enumRequestParam Parameter);
+float GetElement(const unsigned int ArrayElement,enumParamType Parameter);
 
 void SendDataToConsole(void);
 
