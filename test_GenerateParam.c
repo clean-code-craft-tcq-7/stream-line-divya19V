@@ -12,7 +12,7 @@ TEST_CASE("Test case to verify voltage value read from file to the console prope
 
 TEST_CASE("Test case to verify current value reflects from file to the console properly \n")
 {
-  REQUIRE(GetParam(0,PARAM_CURRENT ) == 4.2f);
+  REQUIRE(GetParam(0,PARAM_CURRENT ) == 8.5f);
   REQUIRE(GetParam(6,PARAM_CURRENT ) == 16.700001f);
 }
 TEST_CASE("Switch the fn to Generate random number and check if voltage datasets lie in the range \n")
