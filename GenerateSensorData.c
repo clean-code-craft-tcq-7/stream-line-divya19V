@@ -4,7 +4,7 @@
 
 const unsigned int BufferSize = 50U;
 const unsigned int UpperBoundaryVoltage = 43U, LowerBoundaryVoltage = 29U;
-const unsigned int UpperBoundaryCurrent = 100U;
+const unsigned int LowerBoundaryCurrent = 1U, UpperBoundaryCurrent = 100U;
 
 static tyBatteryParams_t BattParamBuffer[BufferSize];
 tyBatteryParams_t* const BattParamPointer = BattParamBuffer;
@@ -18,7 +18,7 @@ void GenerateRandParams(void)
     BattParamPointer[Index].BattVoltage = \
       (float)((rand() % (UpperBoundaryVoltage - LowerBoundaryVoltage + 1)) + LowerBoundaryVoltage)/10.0f;
     
-    BattParamPointer[Index].BattCurrent = (float)(rand() % UpperBoundaryCurrent)/10.0f;
+    BattParamPointer[Index].BattCurrent = (float)((rand() % (UpperBoundaryCurrent - LowerBoundaryCurrent + 1)) + LowerBoundaryCurrent /10.0f;
   }
 }
 
