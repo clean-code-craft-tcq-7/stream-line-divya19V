@@ -14,7 +14,7 @@ static float (*ParamToFnMap[TOTAL_REQ_PARAM])(unsigned int,const tyBatteryParams
   GetCurrentParam
 };
 
-void ChangeTheGetParamType(void (*GetTypeFunction)())
+void ChangeGetParamType(void (*GetTypeFunction)())
 {
   GetParameters = GetTypeFunction;
 }
@@ -42,7 +42,7 @@ void SendDataToConsole(void)
   }
 }
 
-float GetElement(unsigned int ArrayElement,enumParamType Parameter)
+float GetParam(unsigned int ArrayElement,enumParamType Parameter)
 {
   (*GetParameters)();
   const tyBatteryParams_t* SensorParams = GetSensorArrayParameters();
