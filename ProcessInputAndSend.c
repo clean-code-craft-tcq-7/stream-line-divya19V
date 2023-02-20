@@ -14,7 +14,7 @@ static float (*ParamToFnMap[TOTAL_REQ_PARAM])(unsigned int,const tyBatteryParams
   GetCurrentParam
 };
 
-void ChangeGetParamType(void (*GetTypeFunction)())
+void ChangeParamType(void (*GetTypeFunction)())
 {
   GetParameters = GetTypeFunction;
 }
