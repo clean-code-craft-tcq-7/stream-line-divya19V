@@ -18,7 +18,7 @@ void ChangeTheGetParamType(void (*GetTypeFunction)())
 {
   GetParameters = GetTypeFunction;
 }
-void TransmitDataToConsole(void)
+void SendDataToConsole(void)
 {
   (*GetParameters)();
   const tyBatteryParams_t* SensorParams = GetSensorArrayParameters();
