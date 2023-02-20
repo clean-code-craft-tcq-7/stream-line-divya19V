@@ -7,7 +7,7 @@
 
 enum enumParamType {
   PARAM_VOLTAGE,
-  PARAM_CURRENT
+  PARAM_CURRENT,
 }
 
 void ChangeTheGetParamType(void (*GetTypeFunction)());
