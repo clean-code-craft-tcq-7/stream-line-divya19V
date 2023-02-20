@@ -22,7 +22,7 @@ TEST_CASE("Test case to verify current value reflects from file to the console p
 TEST_CASE("Switch the fn to Generate random number and check if voltage datasets lie in the range \n")
 {
   //The set limit for voltage is between 29/10,0f = 2,9fV and max of 43/10,0f = 4,3fV
-  ChangeGetParamType(GenerateRandParams);
+  ChangeParamType(GenerateRandParams);
   for(unsigned char Index = 0; Index < 50 ; ++Index)
   {
     REQUIRE((GetParam(Index,PARAM_VOLTAGE) >= 2.9f && GetParam(Index,PARAM_VOLTAGE) <= 4.3f) == 0x01);
@@ -31,7 +31,7 @@ TEST_CASE("Switch the fn to Generate random number and check if voltage datasets
 TEST_CASE("check if current datasets lie in the range \n")
 {
   //The set limit for current is between 1/10,0f = 0,1f A and max of 100/10,0f = 10,0f A
-  ChangeGetParamType(GenerateRandParams);
+  ChangeParamType(GenerateRandParams);
   for(unsigned char Index = 0; Index < 50 ; ++Index)
   {
     REQUIRE((GetParam(Index,PARAM_CURRENT) >= 0.1f && GetParam(Index,PARAM_VOLTAGE) <= 10.0f) == 0x01);
