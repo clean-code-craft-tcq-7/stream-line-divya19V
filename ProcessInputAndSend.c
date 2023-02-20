@@ -1,8 +1,24 @@
 #include "ProcessInputAndSend.h"
 
-void (*GetParameters)(void) = GenerateRandParams;
+/*static fn prototypes*/
+static float GetVoltageParam(const unsigned int,const tyBatteryParams_t*);
+static float GetCurrentParam(const unsigned int,const tyBatteryParams_t*);
+/*scope limited global variable (static var)*/
+static void (*GetParameters)(void) = GetSensorParamsFromFile;
 
-void SendDataToConsole(void)
+/*consts*/
+static const unsigned int TOTAL_REQ_PARAM = 2U;
+static float (*ParamToFnMap[TOTAL_REQ_PARAM])(unsigned int,const tyBatteryParams_t*) =
+{
+  GetVoltageParam,
+  GetCurrentParam
+};
+
+void ChangeTheGetParamType(void (*GetTypeFunction)())
+{
+  GetParameters = GetTypeFunction;
+}
+void TransmitDataToConsole(void)
 {
   (*GetParameters)();
   const tyBatteryParams_t* SensorParams = GetSensorArrayParameters();
@@ -24,4 +40,28 @@ void SendDataToConsole(void)
     */
     printf("%f\n%f\n\n",SensorParams[DataSet].BattVoltage,SensorParams[DataSet].BattCurrent); 
   }
+}
+
+float GetElement(unsigned int ArrayElement,enumParamType Parameter)
+{
+  (*GetParameters)();
+  const tyBatteryParams_t* SensorParams = GetSensorArrayParameters();
+  if(ArrayElement >= 50)
+  {
+    return 0xffffffff; //NaN expression 
+  }
+  else 
+  {
+    return (*ParamToFnMap[Parameter])(ArrayElement,SensorParams);
+  }
+}
+
+static float GetVoltageParam(unsigned int ArrayElement,const tyBatteryParams_t* SensorParam)
+{
+  return SensorParam[ArrayElement].BattVoltage;
+}
+
+static float GetCurrentParam(unsigned int ArrayElement,const tyBatteryParams_t* SensorParam)
+{
+  return SensorParam[ArrayElement].BattCurrent;
 }
