@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const unsigned int BufferSizePerSession = 50U;
+const unsigned int BufferSize = 50U;
 const unsigned int UpperBoundaryVoltage = 43U, LowerBoundaryVoltage = 29U;
 const unsigned int UpperBoundaryCurrent = 100U;
 
@@ -13,12 +13,12 @@ static void CopyFromFileToBuffer(FILE* fp);
 
 void GenerateRandParams(void)
 {
-  for(unsigned char ArrIndex = 0U; ArrIndex < BufferSizePerSession; ++ArrIndex)
+  for(unsigned char Index = 0U; Index < BufferSize; ++Index)
   {
-    BattParamPointer[ArrIndex].BattVoltage = \
+    BattParamPointer[Index].BattVoltage = \
       (float)((rand() % (UpperBoundaryVoltage - LowerBoundaryVoltage + 1)) + LowerBoundaryVoltage)/10.0f;
     
-    BattParamPointer[ArrIndex].BattVoltage = (float)(rand() % UpperBoundaryVoltage)/10.0f;
+    BattParamPointer[Index].BattCurrent = (float)(rand() % UpperBoundaryCurrent)/10.0f;
   }
 }
 
@@ -43,7 +43,7 @@ const tyBatteryParams_t* GetSensorArrayParameters(void)
 static void CopyFromFileToBuffer(FILE* fp)
 {
   char TempBuffer[20];
-  for(unsigned char Index = 0U; ((Index < BufferSizePerSession) || (!feof(fp))) ; ++Index)
+  for(unsigned char Index = 0U; ((Index < BufferSize) || (!feof(fp))) ; ++Index)
   {
     fgets(TempBuffer,20,fp);
     BattParamPointer[Index].BattVoltage = (float)atof(TempBuffer);
