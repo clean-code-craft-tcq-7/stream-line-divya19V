@@ -10,8 +10,8 @@ enum enumParamType {
   PARAM_CURRENT,
 };
 
-void ChangeTheGetParamType(void (*GetTypeFunction)());
-float GetElement(const unsigned int ArrayElement,enumParamType Parameter);
+void ChangeParamType(void (*GetTypeFunction)());
+float GetParam(const unsigned int ArrayElement,enumParamType Parameter);
 
 void SendDataToConsole(void);
 
